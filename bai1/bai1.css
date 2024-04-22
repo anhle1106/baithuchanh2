@@ -1,0 +1,69 @@
+body{
+    margin: 0;
+}
+.header{
+    background-color: rgb(64,64,64) ;
+    width: 100%;
+    height:4em
+}
+.trangchu{
+    background-color: rgb(71,77,93) ; 
+    padding: 0.3em;
+}
+.all{
+    display: flex;
+    width: 100%;
+    margin: 0;
+}
+.menu{
+    flex-grow: 2;
+    height: 100vh;
+    background-color: rgb(172,181,192);
+    
+    
+}
+.thongtin{
+    flex-grow: 8;
+    margin-left: 1em;
+}
+.chung{
+    background-color: rgb(172,181,192);
+    flex: 1; 
+    padding: 0.5em; 
+    border-bottom: 1px solid #ddd; 
+}
+.chung:hover{
+    background-color: rgb(41, 175, 154);
+}
+
+    
+.last{
+    flex-grow: 1;
+}
+.dangnhap{
+    background-color: darkseagreen;
+    border-left: 0.5em solid rgb(126, 128, 131);
+    padding : 0.8em
+
+}
+.phantu{
+    display: flex;
+    flex-wrap: wrap;
+}
+.lol {
+    width: calc(25% - 10px); 
+    height: 120px; 
+    margin: 5px; 
+    box-sizing: border-box;
+    align-items: center; 
+    text-align: right;
+    margin-top: 2em;
+}
+.tren{
+    padding-right: 10px;
+}
+.xem{
+    text-align: left;
+    padding-left: 1em;
+    border-top: 0.1em solid #ddd
+}

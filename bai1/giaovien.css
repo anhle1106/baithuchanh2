@@ -1,0 +1,68 @@
+body{
+    margin: 0;
+}
+.header{
+    background-color: rgb(64,64,64) ;
+    width: 100%;
+    height:4em
+}
+.trangchu{
+    background-color: rgb(71,77,93) ; 
+    padding: 0.3em;
+}
+.all{
+    display: flex;
+    width: 100%;
+    margin: 0;
+}
+.menu{
+    flex-grow: 0;
+    height: 100vh;
+    background-color: rgb(172,181,192);
+    
+    
+}
+.thongtin{
+    flex-grow: 9.5;
+    margin-left: 1em;
+    margin-top: 2em;
+}
+.chung{
+    background-color: rgb(172,181,192);
+    flex: 1; 
+    padding: 0.5em; 
+    border-bottom: 1px solid #ddd; 
+}
+.chung:hover{
+    background-color: rgb(41, 175, 154);
+}
+
+    
+.last{
+    flex-grow: 1;
+}
+.container {
+    width: 100%; 
+    overflow-x: auto; 
+    margin-top: 1em;
+    background-color:whitesmoke ;  
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; 
+}
+
+tr {
+    display: flex; 
+}
+
+td {
+    border: 1px solid #ddd; 
+    padding: 8px; 
+    text-align: left; 
+    flex: 1; 
+}
+td.infor{
+    flex-grow: 2;
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biểu đồ</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center; 
+        }
+        p {
+            color: #666;
+            margin-bottom: 15px;
+            text-align: center; 
+        }
+        canvas {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            margin: 0 auto; 
+            display: block; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div id="scatter-plot">
+        <h2>Scatter Plot</h2>
+        <p><strong>Tên:</strong> Scatter Plot</p>
+        <p><strong>Mô tả:</strong> Scatter Plot là một loại biểu đồ sử dụng để hiển thị dữ liệu dưới dạng các điểm trên một mặt phẳng. Nó thường được sử dụng để tìm hiểu mối quan hệ giữa hai hoặc nhiều biến.</p>
+        <div id="scatter-plot-container"></div>
+    </div>
+
+    <div id="line-chart">
+        <h2>Line Chart</h2>
+        <p><strong>Tên:</strong> Line Chart</p>
+        <p><strong>Mô tả:</strong> Line Chart là biểu đồ sử dụng các đường thẳng nối các điểm dữ liệu. Nó thường được sử dụng để thể hiện xu hướng hoặc biến đổi của dữ liệu qua thời gian.</p>
+        <canvas id="line-chart-canvas"></canvas>
+    </div>
+
+    <div id="bar-chart">
+        <h2>Bar Chart</h2>
+        <p><strong>Tên:</strong> Bar Chart</p>
+        <p><strong>Mô tả:</strong> Bar Chart là biểu đồ sử dụng các cột dọc để hiển thị dữ liệu. Nó thường được sử dụng để so sánh giữa các giá trị của các biến khác nhau.</p>
+        <canvas id="bar-chart-canvas"></canvas>
+    </div>
+
+    <div id="pie-chart">
+        <h2>Pie Chart</h2>
+        <p><strong>Tên:</strong> Pie Chart</p>
+        <p><strong>Mô tả:</strong> Pie Chart là biểu đồ hình tròn chia thành các phần tương ứng với tỷ lệ phần trăm của dữ liệu. Nó thường được sử dụng để hiển thị phần trăm của một số dữ liệu so với tổng số.</p>
+        <canvas style="height: 300px;" id="pie-chart-canvas"></canvas>
+    </div>
+
+    <div id="donut-chart">
+        <h2>Donut Chart</h2>
+        <p><strong>Tên:</strong> Donut Chart</p>
+        <p><strong>Mô tả:</strong> Donut Chart là biểu đồ hình tròn giống như Pie Chart nhưng có một lỗ ở giữa. Nó thường được sử dụng để hiển thị phần trăm của các phần con so với tổng số.</p>
+        <canvas id="donut-chart-canvas"></canvas>
+    </div>
+
+    <div id="bubble-chart">
+        <h2>Bubble Chart</h2>
+        <p><strong>Tên:</strong> Bubble Chart</p>
+        <p><strong>Mô tả:</strong> Bubble Chart là biểu đồ sử dụng các điểm tròn với kích thước khác nhau để hiển thị dữ liệu. Nó thường được sử dụng để biểu diễn ba biến dữ liệu, trong đó hai biến được biểu diễn qua tọa độ và biến thứ ba được biểu diễn qua kích thước của các điểm.</p>
+        <canvas id="bubble-chart-canvas"></canvas>
+    </div>
+    </div>
+    <script>
+        var scatterPlotData = [
+            {
+                x: [1, 2, 3, 4, 5],
+                y: [1, 2, 4, 8, 16],
+                mode: 'markers',
+                type: 'scatter'
+            }
+        ];
+        Plotly.newPlot('scatter-plot-container', scatterPlotData);
+
+        var lineChartCanvas = document.getElementById('line-chart-canvas').getContext('2d');
+        var lineChartData = {
+            labels: ['January', 'February', 'March', 'April', 'May'],
+            datasets: [{
+                label: 'Sales',
+                data: [10, 20, 15, 25, 30],
+                borderColor: 'blue',
+                borderWidth: 1,
+                fill: false
+            }]
+        };
+        var lineChartOptions = {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        };
+        var lineChart = new Chart(lineChartCanvas, {
+            type: 'line',
+            data: lineChartData,
+            options: lineChartOptions
+        });
+
+        var barChartCanvas = document.getElementById('bar-chart-canvas').getContext('2d');
+        var barChartData = {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+            datasets: [{
+                label: 'Quantity',
+                data: [2, 12, 13, 15, 6],
+                backgroundColor: ['red', 'blue', 'yellow', 'green', 'purple']
+            }]
+        };
+        var barChart = new Chart(barChartCanvas, {
+            type: 'bar',
+            data: barChartData
+        });
+
+        var pieChartCanvas = document.getElementById('pie-chart-canvas').getContext('2d');
+        var pieChartData = {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+            datasets: [{
+                data: [12, 19, 3, 5, 2],
+                backgroundColor: ['red', 'blue', 'yellow', 'green', 'purple']
+            }]
+        };
+        var pieChart = new Chart(pieChartCanvas, {
+            type: 'pie',
+            data: pieChartData
+        });
+
+        var donutChartCanvas = document.getElementById('donut-chart-canvas').getContext('2d');
+        var donutChartData = {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+            datasets: [{
+                data: [12, 19, 3, 5, 2],
+                backgroundColor: ['red', 'blue', 'yellow', 'green', 'purple']
+            }]
+        };
+        var donutChart = new Chart(donutChartCanvas, {
+            type: 'doughnut',
+            data: donutChartData
+        });
+
+        var bubbleChartData = [
+            { x: 10, y: 20, r: 10 },
+            { x: 30, y: 40, r: 20 },
+            { x: 50, y: 60, r: 30 },
+            { x: 70, y: 80, r: 40 },
+            { x: 90, y: 100, r: 50 }
+        ];
+        var bubbleChartSvg = d3.select('#bubble-chart')
+            .append('svg')
+            .attr('width', 400)
+            .attr('height', 200);
+        bubbleChartSvg.selectAll('circle')
+            .data(bubbleChartData)
+            .enter()
+            .append('circle')
+            .attr('cx', function(d) { return d.x; })
+            .attr('cy', function(d) { return d.y; })
+            .attr('r', function(d) { return d.r; })
+            .style('fill', 'blue');
+    </script>
+</body>
+</html>
